@@ -1,12 +1,9 @@
 package parseAlim ;
 
-import myClasses.* ;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import myClasses.utils.Disp;
 
 
 public class Nutr implements Serializable

@@ -1,11 +1,10 @@
 package parseAlim ;
 
-import myClasses.* ;
-
 import java.util.ArrayList;
 import java.io.Serializable;
-import java.time.LocalDate;
 
+import myClasses.utils.Disp;
+import myClasses.utils.ParseHtml;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -166,7 +165,7 @@ public class Aliment implements Serializable
 		double start = System.currentTimeMillis();
 		/////////// la mesure commence ici.
 		
-		Document doc = ParseHtml.fetchHtmlAsDocument(url_toFetch);
+		Document doc = ParseHtml.fetchHtmlAsDocumentFromUrl(url_toFetch);
 		
 		// 1) ### parse name & cats
 		

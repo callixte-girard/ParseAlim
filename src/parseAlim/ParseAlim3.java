@@ -1,19 +1,14 @@
 package parseAlim ;
 
-import myClasses.* ;
-
-import java.awt.List;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import myClasses.utils.Disp;
+import myClasses.utils.ParseHtml;
+import myClasses.utils.SessionManage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -22,55 +17,85 @@ import org.jsoup.select.Elements;
 
 public class ParseAlim3 {
 	
-	public static String url_main = "https://informationsnutritionnelles.fr" ;
+	public static final String url_main = "https://informationsnutritionnelles.fr" ;
 	
 	// paths
-	private static String path_js = "JS/" ;
-	private static String path_csv = "VBA/" ;
+	private static final String path_js = "JS/" ;
+	private static final String path_csv = "VBA/" ;
+
+	private static final String save_path =
+			"/Users/c/Dropbox/Code/Java/ParseAlim3/saves/";
+	private static final String save_name = "alim_db" ;
 
 	//////////////////////////////////////////////////////////:
 	
 	public static void main(String[] args) throws Exception
-	{	
+	{
 		System.out.println("-------------------- ParseAlim3 --------------------");
-		
 		double start = System.currentTimeMillis();
 		int nb_actuel = 0 ; // pour compter la prog
-	
-	//	new Aliment("coucou", "coucou.com", "test");
-		
-		/////// INIT : ### download the page with all Aliment
-		System.out.println(">>> Fetching aliment list... May take some time. Please wait");
-		Document doc = ParseHtml.fetchHtmlAsDocument(url_main + "/aliments");
-		System.out.println(Disp.htag);
-		
-		ArrayList<String> url_list = getLinksToParse(doc);
-		
-		// then parse them one by one.
-		for (String url : url_list)
-		{
-			Aliment al = Aliment.parseFromShortUrl(url);
-		//	al.dispAttr(false); // true/false = with/without nutr
-			al.dispBlock();
-			
-			// display progress
-			nb_actuel += 1 ;
-			Disp.displayProgress(nb_actuel, url_list.size());
-			
-			// ### NB : la sauvegarde a lieu plus tard,
-			// uniquement si tout le téléchargement
-			// s'est passé sans problème
+
+		SessionManage.setSavePath(save_path);
+
+		// ## FIRST OF ALL, start loading save, if it exists.
+		try {
+
+			Object saved_data = SessionManage.objectLoad
+					(save_name + ".sav", true);
+
+			Aliment.al.addAll((ArrayList<Aliment>) saved_data);
+
+			// now display it
+			for (Aliment al : Aliment.al)
+			{
+				al.dispAttr(false);
+//				al.dispBlock();
+			}
+
+		// ## ELSE, start fetching all aliments and export to csv.
+		} catch (NullPointerException np_ex) {
+
+			System.out.println("!!! COULD NOT LOAD FROM FILE [" + save_name + "]");
+			System.out.println(Disp.htag);
+			System.out.println(Disp.htag);
+			System.out.println(">>> Fetching aliment list... May take some time. Please wait");
+			Document doc = ParseHtml.fetchHtmlAsDocumentFromUrl(url_main + "/aliments");
+			System.out.println(Disp.htag);
+
+			ArrayList<String> url_list = getLinksToParse(doc);
+
+			int pipou = 0 ;
+			// then parse them one by one.
+			for (String url : url_list)
+			{
+				pipou ++ ;
+//			if (pipou < 10) // possibility to limit the number of downloads with this line
+				{
+					Aliment al = Aliment.parseFromShortUrl(url);
+					//	al.dispAttr(false); // true/false = with/without nutr
+					al.dispBlock();
+
+					// display progress
+					nb_actuel += 1;
+					Disp.displayProgress(nb_actuel, url_list.size());
+				}
+				// ### NB : la sauvegarde a lieu plus tard,
+				// uniquement si tout le téléchargement
+				// s'est passé sans problème
+			}
+
+
+			/////// END : ### saves data in external text file
+			System.out.println(Disp.htag);
+			SessionManage.objectSave(save_name + ".sav", Aliment.al);
+			// to play around lol
+//		SessionManage.test("alim_db.csv", Aliment.al);
+			System.out.println(Disp.htag);
+			/////// saving finished.
 		}
-	
-		
-		/////// END : ### saves data in external text file
-		System.out.println(Disp.htag);
-		
-		SessionManage.setSavePath("parseAlim3/");
-		SessionManage.objectSave("alim_db" , Aliment.al);
-		
-		System.out.println(Disp.htag);
-		/////// saving finished.
+
+
+
 		
 		double end = System.currentTimeMillis();
 		
