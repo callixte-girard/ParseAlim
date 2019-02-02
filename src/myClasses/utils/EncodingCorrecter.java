@@ -1,5 +1,7 @@
 package myClasses.utils;
 
+import java.lang.reflect.Field;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +14,20 @@ public class EncodingCorrecter {
 	private static HashMap<String, Character> mapping_percentEncoding = new HashMap<String, Character>() ;
 	private static HashMap<String, Character> mapping_htmlEncoding = new HashMap<String, Character>() ;
 	private static HashMap<String, Character> mapping_u00 = new HashMap<String, Character>() ;
-	
+
+
+
+	public static void refreshEncodingAtStartup(String force_encoding) throws Exception
+	{
+//		"UTF-8"
+
+		System.setProperty("file.encoding",force_encoding);
+		Field charset = Charset.class.getDeclaredField("defaultCharset");
+		charset.setAccessible(true);
+		charset.set(null,null);
+	}
+
+
 	private static void fetchPercentEncodingTable()
 	{
 		String html = ParseHtml.fetchHtmlAsDocumentFromUrl(url_percentEncoding).html();

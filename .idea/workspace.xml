@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cb08baa5-7905-411c-843a-548faa73f21b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/ClassReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/Disp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/EncodingCorrecter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/FileManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/ParseHtml.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/ParseText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/ReadWriteFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/SessionManage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/Tab$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/Tab$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/Tab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/Terminal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/myClasses/TerminalException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/parseAlim/Aliment.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/parseAlim/Aliment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/parseAlim/Nutr.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/parseAlim/Nutr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/META-INF/ParseAlim3.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/parseAlim/ParseAlim3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/parseAlim/ParseAlim3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myClasses/utils/EncodingCorrecter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myClasses/utils/EncodingCorrecter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parseAlim/ParseAlim3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parseAlim/ParseAlim3.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,19 +18,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myClasses/utils/ClassReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myClasses/utils/EncodingCorrecter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="270">
+              <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -75,28 +54,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/myClasses/utils/Misc.java">
+        <entry file="file://$PROJECT_DIR$/src/parseAlim/ParseAlim3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myClasses/utils/ReadWriteFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myClasses/utils/SessionManage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="363">
+              <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,17 +112,24 @@
       <list>
         <option value="$PROJECT_DIR$/src/parseAlim/Aliment.java" />
         <option value="$PROJECT_DIR$/src/myClasses/SessionManage.java" />
-        <option value="$PROJECT_DIR$/src/parseAlim/ParseAlim3.java" />
         <option value="$PROJECT_DIR$/src/myClasses/ParseHtml.java" />
         <option value="$PROJECT_DIR$/src/myClasses/Misc.java" />
         <option value="$PROJECT_DIR$/src/myClasses/utils/Misc.java" />
+        <option value="$PROJECT_DIR$/src/myClasses/utils/EncodingCorrecter.java" />
+        <option value="$PROJECT_DIR$/src/parseAlim/ParseAlim3.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="817" />
+    <option name="height" value="812" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -169,48 +137,62 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="ParseAlim3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParseAlim3" type="462c0819:PsiDirectoryNode" />
+              <item name="ParseAlim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParseAlim" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ParseAlim3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParseAlim3" type="462c0819:PsiDirectoryNode" />
+              <item name="ParseAlim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParseAlim" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ParseAlim3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParseAlim3" type="462c0819:PsiDirectoryNode" />
+              <item name="ParseAlim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParseAlim" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="myClasses" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ParseAlim3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParseAlim3" type="462c0819:PsiDirectoryNode" />
+              <item name="ParseAlim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParseAlim" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="myClasses" type="462c0819:PsiDirectoryNode" />
+              <item name="--- jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParseAlim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParseAlim" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="myClasses" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParseAlim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParseAlim" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="parseAlim" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548342178302" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549119448324" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -271,11 +253,14 @@
       <workItem from="1548337446954" duration="1352000" />
       <workItem from="1548344393469" duration="599000" />
       <workItem from="1548514972183" duration="276000" />
+      <workItem from="1549116900675" duration="2551000" />
+      <workItem from="1549119522150" duration="25000" />
+      <workItem from="1549119567107" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8360000" />
+    <option name="totallyTimeSpent" value="11535000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -287,23 +272,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="809" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="812" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.23891273" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.15808298" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33751744" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33734939" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32771084" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.28591353" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.22771084" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32891566" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32635984" />
@@ -317,8 +303,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
-      <window_info anchor="right" id="Structure" order="9" side_tool="true" visible="true" weight="0.24177396" />
-      <window_info anchor="right" id="Maven" order="10" />
+      <window_info anchor="right" id="Structure" order="9" sideWeight="0.5013889" side_tool="true" visible="true" weight="0.29470673" />
+      <window_info anchor="right" id="Maven" order="10" sideWeight="0.49861112" weight="0.3297568" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,16 +325,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/parseAlim/ParseAlim3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/myClasses/ParseText.java" />
     <entry file="file://$PROJECT_DIR$/src/myClasses/utils/ClassReader.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -357,10 +333,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/EncodingCorrecter.java">
+    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/SessionManage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="450">
+          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/ReadWriteFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/Misc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -385,23 +378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/ReadWriteFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/SessionManage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/myClasses/utils/Tab.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -416,10 +392,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/Misc.java">
+    <entry file="file://$PROJECT_DIR$/src/myClasses/utils/EncodingCorrecter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+        <state relative-caret-position="270">
+          <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parseAlim/ParseAlim3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

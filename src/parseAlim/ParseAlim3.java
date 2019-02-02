@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import myClasses.utils.Disp;
+import myClasses.utils.EncodingCorrecter;
 import myClasses.utils.ParseHtml;
 import myClasses.utils.SessionManage;
 import org.jsoup.nodes.Document;
@@ -20,12 +21,12 @@ public class ParseAlim3 {
 	public static final String url_main = "https://informationsnutritionnelles.fr" ;
 	
 	// paths
-	private static final String path_js = "JS/" ;
-	private static final String path_csv = "VBA/" ;
-
 	private static final String save_path =
-			"/Users/c/Dropbox/Code/Java/ParseAlim3/saves/";
-	private static final String save_name = "alim_db" ;
+			"/Users/c/Google Drive/Code Archives/Java/saves/";
+	private static final String export_path =
+			"/Users/c/Google Drive/Docs vrac/Food/" ;
+
+	private static final String filename = "alim_db";
 
 	//////////////////////////////////////////////////////////:
 	
@@ -36,12 +37,13 @@ public class ParseAlim3 {
 		int nb_actuel = 0 ; // pour compter la prog
 
 		SessionManage.setSavePath(save_path);
+		EncodingCorrecter.refreshEncodingAtStartup("UTF-8");
 
 		// ## FIRST OF ALL, start loading save, if it exists.
 		try {
 
 			Object saved_data = SessionManage.objectLoad
-					(save_name + ".sav", true);
+					(filename + ".sav", true);
 
 			Aliment.al.addAll((ArrayList<Aliment>) saved_data);
 
@@ -55,7 +57,7 @@ public class ParseAlim3 {
 		// ## ELSE, start fetching all aliments and export to csv.
 		} catch (NullPointerException np_ex) {
 
-			System.out.println("!!! COULD NOT LOAD FROM FILE [" + save_name + "]");
+			System.out.println("!!! COULD NOT LOAD FROM FILE [" + filename + "]");
 			System.out.println(Disp.htag);
 			System.out.println(Disp.htag);
 			System.out.println(">>> Fetching aliment list... May take some time. Please wait");
@@ -84,19 +86,17 @@ public class ParseAlim3 {
 				// s'est passé sans problème
 			}
 
-
-			/////// END : ### saves data in external text file
-			System.out.println(Disp.htag);
-			SessionManage.objectSave(save_name + ".sav", Aliment.al);
-			// to play around lol
-//		SessionManage.test("alim_db.csv", Aliment.al);
-			System.out.println(Disp.htag);
-			/////// saving finished.
 		}
 
+		/////// END : ### saves data in external text file
+		System.out.println(Disp.htag);
+		// write file for later quicker load
+		SessionManage.objectSave(filename + ".sav", Aliment.al);
+		// write file for exporting in excel, for example
+		writeCSVRequests(filename + ".csv", true);
+		System.out.println(Disp.htag);
+		/////// saving finished.
 
-
-		
 		double end = System.currentTimeMillis();
 		
 		System.out.println(":D :D :D ------------ GOOD JOB ! Total time : " + (end-start) + " ms ------------ :D :D :D");
@@ -137,7 +137,7 @@ public class ParseAlim3 {
 	{ /// #### ATTENTION : version spécifique en attendant.
 		try
 		{
-			BufferedWriter bw = outputForWrite(path_js + filename);
+			BufferedWriter bw = outputForWrite(export_path + filename);
 			
 			bw.write("var alim_tab = ");
 			bw.write("[");
@@ -210,29 +210,50 @@ public class ParseAlim3 {
 
 
 	private static void writeCSVRequests(String filename, boolean with_nutr) throws Exception
-	{ /// #### pareil
+	{ /// #### ATTENTION : version spécifique en attendant.
+
+		String save_to = export_path + filename ;
+		System.out.println(save_to);
+
 		try
 		{
-			BufferedWriter bw = outputForWrite(path_csv + filename);
-	
+			BufferedWriter bw = outputForWrite(save_to);
+
+			// I) makes header first
+			bw.write("Aliment" + ",");
+			bw.write("Catégorie" + ",");
+			bw.write("URL" + ",");
+//			bw.write("Country code" + ",");
+
+			if (with_nutr)
+			{
+				for (Nutr n_header : Aliment.al.get(0).nutr)
+				{
+					bw.write(n_header.nom + ",");
+				}
+			}
+			bw.newLine();
+
+			// II) then writes data cell by cell
 			for (Aliment al : Aliment.al)
 			{
 				bw.write(al.nom + ",");
 				bw.write(al.cat + ",");
 				bw.write(al.url + ",");
 			//	bw.write(al.country_code + ",");
-				bw.write("" + Nutr.getByNameInList(al.nutr, "Energie").val);
-				bw.newLine();
-				
+//				bw.write("" + Nutr.getByNameInList(al.nutr, "Energie").val);
+
 				if (with_nutr)
 				{
-					
-					
 					for (Nutr n : al.nutr)
 					{
 						//save(path_main + "test");
+
+						bw.write(n.val + ",");
 					}
 				}
+
+				bw.newLine();
 			}
 			
 			bw.close();
