@@ -1,4 +1,4 @@
-This little pure Java software parses food database at https://informationsnutritionnelles.fr/ (it's in French.)
+This little pure Java software parses open source food database on this website : https://informationsnutritionnelles.fr/ (it's in French.)
 
 After parsing is done, it saves :
 - the arraylist containing all the parsed food objects (class is called Aliment in code), for loading it directly next time instead of scraping the whole database again each time.
