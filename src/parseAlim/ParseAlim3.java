@@ -21,15 +21,15 @@ public class ParseAlim3 {
 	public static final String url_main = "https://informationsnutritionnelles.fr" ;
 	
 	// paths
-	private static final String save_path =
-			"/Users/c/Google Drive/Code Archives/Java/saves/";
-	private static final String export_path =
-			"/Users/c/Google Drive/Docs vrac/Food/" ;
+	private static final String save_path = "/Users/c/OneDrive/Code Utilities & Data/";
+	private static final String export_path = save_path;
+	private static final boolean export_csv = true;
+	private static final String separator = "—";
 
 	private static final String filename = "alim_db";
 
-	//////////////////////////////////////////////////////////:
-	
+	//////////////////////////////////////////////////////////
+
 	public static void main(String[] args) throws Exception
 	{
 		System.out.println("-------------------- ParseAlim3 --------------------");
@@ -47,12 +47,14 @@ public class ParseAlim3 {
 
 			Aliment.al.addAll((ArrayList<Aliment>) saved_data);
 
-			// now display it
+			// now display them ...
 			for (Aliment al : Aliment.al)
 			{
 				al.dispAttr(false);
 //				al.dispBlock();
 			}
+			// ... and export them !
+			if (export_csv) writeToCSV(filename, true, true, false, separator);
 
 		// ## ELSE, start fetching all aliments and export to csv.
 		} catch (NullPointerException np_ex) {
@@ -93,7 +95,7 @@ public class ParseAlim3 {
 		// write file for later quicker load
 		SessionManage.objectSave(filename + ".sav", Aliment.al);
 		// write file for exporting in excel, for example
-		writeCSVRequests(filename + ".csv", true);
+		writeToCSV(filename, true, true, true, separator);
 		System.out.println(Disp.htag);
 		/////// saving finished.
 
@@ -131,105 +133,34 @@ public class ParseAlim3 {
 		
 		return url_to_parse ;
 	}
-	
-	
-	private static void writeJSRequests(String filename, boolean full)
-	{ /// #### ATTENTION : version spécifique en attendant.
-		try
-		{
-			BufferedWriter bw = outputForWrite(export_path + filename);
-			
-			bw.write("var alim_tab = ");
-			bw.write("[");
-			bw.newLine();
-	
-			for (Aliment al : Aliment.al)
-			{
-				
-				bw.write("new Aliment(");
-				bw.newLine();
-				bw.write('"' + al.nom + '"' + ",");
-				bw.newLine();
-				bw.write('"' + al.cat + '"' + ",");
-				bw.newLine();
-				bw.write('"' + al.url + '"' + ",");
-				bw.newLine();
-			//	bw.write('"' + al.country_code + '"' + ",");
-			//	bw.newLine();
-				
-				bw.write('[');
-				bw.newLine();
-			
-				ArrayList<Nutr> to_write = new ArrayList<Nutr>() ;
-				if (full)
-				{
-					to_write = al.nutr ;
-				}
-				else
-				{
-					to_write = Nutr.getAllMainInList(al.nutr);
-					//to_write = Nutr.getAllMasterInList(al.nutr);
-				}
-				
-				for (Nutr n : to_write)
-				{
-					//n.dispWithSubNutr();
-					/*
-					bw.write("new Nutr("
-							+ '"' + n.nom + '"' + ","
-							+ n.val + ","
-							+ '"' + n.unit + '"' + ","
-						//	+ '"' + n.parent.nom + '"'
-							+ ") ,"
-					); */
-					bw.write("{ " 
-							+ "nom:" + '"' + n.nom + '"' + ","
-							+ "val:" + n.val + ","
-							+ "unit:" + '"' + n.unit + '"' + ","
-							+ " },");
-					
-					bw.newLine();
-				}
-				
-				bw.write(']');
-				bw.newLine();
-				bw.write("),");
-				bw.newLine();
-			}
-			
-			bw.write("] ;");
-			bw.close();
-			
-			System.out.println(" ************************** WRITING TO .js FILE FINISHED *************************");
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
 
 
-	private static void writeCSVRequests(String filename, boolean with_nutr) throws Exception
-	{ /// #### ATTENTION : version spécifique en attendant.
+	private static void writeToCSV(
+			String filename,
+			boolean with_nutr,
+			boolean add_extension,
+			boolean with_hyphens,
+			String separator
+	) throws Exception {
 
-		String save_to = export_path + filename ;
-		System.out.println(save_to);
+		String write_to = export_path + filename ;
+		if (add_extension) write_to += ".csv";
+		System.out.println(">>> Will export to : " + write_to);
 
 		try
 		{
-			BufferedWriter bw = outputForWrite(save_to);
+			BufferedWriter bw = outputForWrite(write_to);
 
 			// I) makes header first
-			bw.write("Aliment" + ",");
-			bw.write("Catégorie" + ",");
-			bw.write("URL" + ",");
-//			bw.write("Country code" + ",");
+			writeProperty(bw, "Aliment", with_hyphens, separator);
+			writeProperty(bw, "Catégorie", with_hyphens, separator);
+			writeProperty(bw, "URL", with_hyphens, separator);
+//			writeProperty(bw, "Country code", true, separator);
 
 			if (with_nutr)
 			{
-				for (Nutr n_header : Aliment.al.get(0).nutr)
-				{
-					bw.write(n_header.nom + ",");
+				for (Nutr n_header : Aliment.al.get(0).nutr) {
+					writeProperty(bw, n_header.nom, with_hyphens, separator);
 				}
 			}
 			bw.newLine();
@@ -237,10 +168,10 @@ public class ParseAlim3 {
 			// II) then writes data cell by cell
 			for (Aliment al : Aliment.al)
 			{
-				bw.write(al.nom + ",");
-				bw.write(al.cat + ",");
-				bw.write(al.url + ",");
-			//	bw.write(al.country_code + ",");
+				writeProperty(bw, al.nom, with_hyphens, separator);
+				writeProperty(bw, al.cat, with_hyphens, separator);
+				writeProperty(bw, al.url, with_hyphens, separator);
+//				writeProperty(bw, al.country_code, with_hyphens, separator);
 //				bw.write("" + Nutr.getByNameInList(al.nutr, "Energie").val);
 
 				if (with_nutr)
@@ -248,8 +179,7 @@ public class ParseAlim3 {
 					for (Nutr n : al.nutr)
 					{
 						//save(path_main + "test");
-
-						bw.write(n.val + ",");
+						writeProperty(bw, String.valueOf(n.val) + " " + n.unit, with_hyphens, separator);
 					}
 				}
 
@@ -264,6 +194,15 @@ public class ParseAlim3 {
 		{
 			e.printStackTrace();
 		}
+	}
+
+	private static void writeProperty(BufferedWriter bw, String value, boolean with_hyphens, String separator)
+			throws IOException
+	{
+		if (with_hyphens) bw.write("\"");
+		bw.write(value);
+		if (with_hyphens) bw.write("\"");
+		bw.write(separator);
 	}
 
 	private static BufferedWriter outputForWrite(String path)
